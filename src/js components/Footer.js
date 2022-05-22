@@ -1,11 +1,24 @@
-function Footer () {
+import StyledComponent from "styled-components";
+
+export default function Footer () {
     return (
-        <footer className = "chosen-movie-information">
-            <div class = "movie-option">
+        <ChosenMovieInformation>
+            <MovieOption>
               <img src = "index.html" />
-            </div>
+            </MovieOption>
             <h3>movie title</h3>
             <h3>session date - time</h3>
-        </footer>
+        </ChosenMovieInformation>
     );
 }
+
+const ChosenMovieInformation = StyledComponent.footer`
+    width: 375px;
+    height: 117px;
+    background: #DFE6ED;
+    border: 1px solid #9EADBA;
+`;
+
+const MovieOption = StyledComponent.div`
+    
+`;

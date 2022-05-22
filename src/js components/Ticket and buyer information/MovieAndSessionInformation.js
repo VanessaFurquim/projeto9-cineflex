@@ -1,4 +1,4 @@
-function MovieAndSeesionInformation () {
+export default function MovieAndSessionInformation () {
     return (
         <section class = "movie-and-session-information">
             <h5>Filme e sessão</h5>

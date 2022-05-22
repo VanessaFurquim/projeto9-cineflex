@@ -1,4 +1,4 @@
-function MovieTicketsInformation() {
+export default function MovieTicketsInformation() {
   return (
     <section class="movie-tickets-information">
       <h5>Ingressos</h5>

@@ -1,4 +1,4 @@
-function AvailableSeatOptions () {
+export default function AvailableSeatOptions () {
     return (
         <section class = "available-seat-options">
             <button class = "seat-option">seat number</button>

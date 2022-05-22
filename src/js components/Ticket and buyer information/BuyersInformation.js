@@ -1,4 +1,4 @@
-function BuyersInfomation () {
+export default function BuyersInfomation () {
     return (
         <section class = "buyers-information">
             <h5>Nome: nome do comprador</h5>
