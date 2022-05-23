@@ -9,7 +9,7 @@ export default function ShowtimesOfDay ({ daySessions }) {
                 <SessionShowtimesContainer>
                     {
                         daySessions.showtimes.map(time => (
-                            <Link to = {`/assentos/${daySessions.showtimes.id}`}>
+                            <Link to = {`/assentos/${time.id}`}>
                                 <ShowtimeButton>
                                     <ShowtimeText>{time.name}</ShowtimeText>
                                 </ShowtimeButton>

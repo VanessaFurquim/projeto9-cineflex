@@ -1,10 +1,20 @@
+import { useState } from "react";
 import styledComponent from "styled-components";
 
 export default function ColectBuyersCPF () {
+
+    const [typedCPF, setTypedCPF] = useState("");
+
     return (
         <>
-            <label>CPF do comprador:</label>
-            <input id="cpf" htmlFor="cpf" type="text" pattern="[0-9]{11}" placeholder="Digite seu CPF..." maxLength={11} minLength={11} required onChange={e => setCPF(e.target.value)} />
+            <BuyersCPF>CPF do comprador:</BuyersCPF>
+            <BuyersCPFInput
+            type = "text"
+            placeholder = "Digite seu CPF..."
+            maxLength = {11}
+            minLength = {11}
+            required
+            onChange = {event => setTypedCPF(event.target.value)} />
         </>
     );
 }
