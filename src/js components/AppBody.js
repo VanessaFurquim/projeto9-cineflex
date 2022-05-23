@@ -5,7 +5,6 @@ import MovieOptions from "./Movie Options/MovieOptions";
 import SessionOptions from "./Session options/SessionOptions";
 import AvailableSeatOptions from "./Seat options/AvailableSeatOptions";
 import TicketAndBuyerInformation from "./Ticket and buyer information/TicketAndBuyerInformation";
-import Footer from "./Footer";
 
 export default function AppBody () {
     return (
@@ -14,11 +13,10 @@ export default function AppBody () {
                 <Header />
                 <Routes>
                     <Route path = "/" element = {<MovieOptions />} />
-                    <Route path = "/sessoes/:idMovie" element = {<SessionOptions />} />
-                    <Route path = "/assentos/:idSession" element = {<AvailableSeatOptions />} />
+                    <Route path = "/sessoes/:movieID" element = {<SessionOptions />} />
+                    <Route path = "/assentos/:sessionID" element = {<AvailableSeatOptions />} />
                     <Route path = "/sucesso" element = {<TicketAndBuyerInformation />} />
                 </Routes>
-                <Footer />
             </BrowserRouter>
         </>
     );

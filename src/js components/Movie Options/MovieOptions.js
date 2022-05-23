@@ -3,8 +3,9 @@ import axios from "axios";
 import styledComponent from "styled-components";
 
 // import API_MOVIE_LIST from "../API.js/APILinks";
-import MoviePosterTemplate from "./MoviePoster";
 // import requestingMovieList from "../API.js/APIRequests";
+import MoviePosterTemplate from "./MoviePoster";
+import { PageHeader } from "../PageHeader";
 
 export default function MovieOptions () {
 
@@ -21,35 +22,18 @@ export default function MovieOptions () {
     return (
         <>
             <PageHeader>
-                <h1>Selecione o filme</h1>
+                <PageHeaderTitle>Selecione o filme</PageHeaderTitle>
             </PageHeader>
             <MovieOptionsContainer>
                 {
                     movies.map(movie => (
-                        <MoviePosterTemplate key = {movie.id} moviePoster = {movie.posterURL} />
+                        <MoviePosterTemplate key = {movie.id} IDNumber = {movie.id} moviePoster = {movie.posterURL} />
                     ))
                 }
             </MovieOptionsContainer>
         </>
     );
 }
-
-const PageHeader = styledComponent.div`
-    width: 375px;
-    height: 110px;
-    background: #FFFFFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    h1 {
-        font-size: 24px;
-        font-weight: 400;
-        color: #293845;
-        line-height: 28px;
-        letter-spacing: 0.04em;
-    };
-`;
 
 const MovieOptionsContainer = styledComponent.section`
     width: 375px;
@@ -59,4 +43,12 @@ const MovieOptionsContainer = styledComponent.section`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+`;
+
+const PageHeaderTitle = styledComponent.h1`
+    font-size: 24px;
+    font-weight: 400;
+    color: #293845;
+    line-height: 28px;
+    letter-spacing: 0.04em;
 `;

@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom";
 import StyledComponent from "styled-components";
 
-export default function MoviePosterTemplate ({moviePoster}) {
+export default function MoviePosterTemplate ({moviePoster, IDNumber}) {
     return (
-        <MoviePoster>
-            <img src = {moviePoster} alt = "movie poster image" />
-        </MoviePoster>
+        <Link to = {`/sessoes/${IDNumber}`}>
+            <MoviePoster>
+                <img src = {moviePoster} alt = "movie poster" />
+            </MoviePoster>
+        </Link>
     );
 }
 
