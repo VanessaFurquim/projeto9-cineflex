@@ -5,7 +5,7 @@ import styledComponent from "styled-components";
 // import API_MOVIE_LIST from "../API.js/APILinks";
 // import requestingMovieList from "../API.js/APIRequests";
 import MoviePosterTemplate from "./MoviePoster";
-import { PageHeader } from "../PageHeader";
+import { PageHeader, PageHeaderTitle } from "../PageHeader";
 
 export default function MovieOptions () {
 
@@ -45,10 +45,10 @@ const MovieOptionsContainer = styledComponent.section`
     justify-content: space-between;
 `;
 
-const PageHeaderTitle = styledComponent.h1`
-    font-size: 24px;
-    font-weight: 400;
-    color: #293845;
-    line-height: 28px;
-    letter-spacing: 0.04em;
-`;
+// const PageHeaderTitle = styledComponent.h1`
+//     font-size: 24px;
+//     font-weight: 400;
+//     color: #293845;
+//     line-height: 28px;
+//     letter-spacing: 0.04em;
+// `;

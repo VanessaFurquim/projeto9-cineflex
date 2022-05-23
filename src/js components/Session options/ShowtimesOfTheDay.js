@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styledComponent from "styled-components";
 
 export default function ShowtimesOfDay ({ daySessions }) {
@@ -8,15 +9,17 @@ export default function ShowtimesOfDay ({ daySessions }) {
                 <SessionShowtimesContainer>
                     {
                         daySessions.showtimes.map(time => (
-                            <ShowtimeButton>
-                                <ShowtimeText>{time.name}</ShowtimeText>
-                            </ShowtimeButton>
+                            <Link to = {`/assentos/${daySessions.showtimes.id}`}>
+                                <ShowtimeButton>
+                                    <ShowtimeText>{time.name}</ShowtimeText>
+                                </ShowtimeButton>
+                            </Link>
                         ))
                     }
                 </SessionShowtimesContainer>
             </section>
         </>
-    )
+    );
 }
 
 const SessionWeekdayAndDate = styledComponent.h4`
