@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import styledComponent from "styled-components";
 
@@ -15,6 +15,7 @@ export default function AvailableSeatOptions () {
 	const { sessionID } = useParams();
 	const [seatchart, setSeatchart] = useState(null);
 	const [selectSeat, setSelectSeat] = useState(false);
+	const [selectedSeats, setSelecedSeats] = useState([]);
 
     useEffect(() => {
         const seatList = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sessionID}/seats`);
@@ -31,6 +32,20 @@ export default function AvailableSeatOptions () {
 		}
 
 		setSelectSeat(true);
+		setSelecedSeats([...selectedSeats, seat])
+	}
+
+	function postOrder({ typedName, typedCPF }) {
+
+		const body = {
+			ids: selectedSeats.map(seat => seat.id),
+			name: typedName,
+			cpf: typedCPF
+		};
+		const postData = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", body);
+
+		postData.then(response => {});
+		postData.catch();
 	}
 
     if(seatchart === null) {
@@ -64,7 +79,9 @@ export default function AvailableSeatOptions () {
 			<Form>
 				<BuyersName />
 				<BuyersCPF />
-				<ReserveSeatsButton />
+				<Link to = "/sucesso">
+					<ReserveSeatsButton postOrder = {postOrder} />
+				</Link>
 			</Form>
 			<Footer />
         </>
