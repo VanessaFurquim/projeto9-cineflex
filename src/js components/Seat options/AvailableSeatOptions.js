@@ -4,6 +4,7 @@ import axios from "axios";
 import styledComponent from "styled-components";
 
 import { PageHeader, PageHeaderTitle } from "../PageHeader";
+import SeatAvailable from "./SeatAvailable";
 import Legends from "./Legends";
 import BuyersName from "./BuyersName";
 import BuyersCPF from "./BuyersCPF";
@@ -15,7 +16,7 @@ export default function AvailableSeatOptions () {
 	const { sessionID } = useParams();
 	const [seatchart, setSeatchart] = useState(null);
 	const [selectSeat, setSelectSeat] = useState(false);
-	const [selectedSeats, setSelecedSeats] = useState([]);
+	const [selectedSeats, setSelectedSeats] = useState([]);
 
     useEffect(() => {
         const seatList = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sessionID}/seats`);
@@ -24,16 +25,6 @@ export default function AvailableSeatOptions () {
             setSeatchart(APIResponse.data);
         });
     }, []);
-
-	function selectedSeat (seat) {
-		if (!seat.isAvailable) {
-			alert("Assento indisponível");
-			return;
-		}
-
-		setSelectSeat(true);
-		setSelecedSeats([...selectedSeats, seat])
-	}
 
 	function postOrder({ typedName, typedCPF }) {
 
@@ -48,6 +39,8 @@ export default function AvailableSeatOptions () {
 		postData.catch();
 	}
 
+	console.log(selectedSeats);
+
     if(seatchart === null) {
         return "Aguarde, por favor ...";
     } else {
@@ -58,20 +51,15 @@ export default function AvailableSeatOptions () {
             </PageHeader>
             <AvailableSeats>
                 {
-                    seatchart.seats.map(seat => (
-						!seat.isAvailable ?
-							<SeatUnavailable
-								onClick = {() => selectedSeat(seat)}
-							> 
-							{seat.name}
-							</SeatUnavailable>
-							:
-							<SeatAvailable
-								status = {selectSeat}
-								onClick = {() => selectedSeat(seat)}
-							>
+                    seatchart.seats.map((seat, index) => (
+						<SeatAvailable 
+							key = {index}
+							seat = {seat} 
+							selectedSeats = {selectedSeats}
+							setSelectedSeats = {setSelectedSeats}
+						>
 								{seat.name}
-							</SeatAvailable>
+						</SeatAvailable>
                     ))
                 }
             </AvailableSeats>
@@ -95,42 +83,6 @@ const AvailableSeats = styledComponent.section`
 	padding-right: 18px;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-`;
-
-const SeatAvailable = styledComponent.button`
-	width: 25px;
-    height: 25px;
-	background: ${props => props.status ? "#8DD7CF" : "#C3CFD9"};
-    border: 1px solid ${props => props.status ? "#1AAE9E" : "#7B8B99"};
-	border-radius: 17px;
-	margin-right: 7px;
-	margin-bottom: 12px;
-	font-size: 11px;
-	font-weight: 400;
-	line-height: 13px;
-	letter-spacing: 0.04em;
-	color: #000000;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-`;
-
-const SeatUnavailable = styledComponent.div`
-    width: 25px;
-    height: 25px;
-    background: #FBE192;
-    border: 1px solid #F7C52B;
-    border-radius: 17px;
-	margin-right: 7px;
-	margin-bottom: 12px;
-	font-size: 11px;
-	font-weight: 400;
-	line-height: 13px;
-	letter-spacing: 0.04em;
-	color: #000000;
-	display: flex;
 	justify-content: center;
 	align-items: center;
 `;
