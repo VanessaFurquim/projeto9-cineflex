@@ -5,10 +5,13 @@ import BuyersInformation from "./BuyersInformation";
 import MovieTicketsInformation from "./MovieTicketsInformation";
 import BackToHomeButton from "./BackToHomeButton";
 
-export default function TicketAndBuyerInformationPage () {
+export default function TicketAndBuyerInformationPage ({ selectedMovie, selectedMovieSession }) {
     return (
         <>
-            <MovieAndSessionInformation />
+            <MovieAndSessionInformation
+                selectedMovie = {selectedMovie}
+                selectedMovieSession = {selectedMovieSession}
+            />
             <BuyersInformation />
             <MovieTicketsInformation />
             <BackToHomeButton />

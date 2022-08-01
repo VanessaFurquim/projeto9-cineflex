@@ -1,8 +1,8 @@
 import styledComponent from "styled-components";
 
-export default function ShowReserveSeatsButton ( {postOrder} ) {
+export default function ShowReserveSeatsButton ( {postOrder, setInformation} ) {
     return (
-        <ReserveSeatsButton onClick = {postOrder}>Reservar assento(s)</ReserveSeatsButton>
+        <ReserveSeatsButton onClick = {postOrder} onSubmit = {setInformation}>Reservar assento(s)</ReserveSeatsButton>
     );
 }
 

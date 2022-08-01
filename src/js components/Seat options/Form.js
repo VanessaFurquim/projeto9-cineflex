@@ -7,7 +7,7 @@ import BuyersName from "./BuyersName";
 import BuyersCPF from "./BuyersCPF";
 import ReserveSeatsButton from "./ReserveSeatsButton";
 
-export default function Form ({ selectedSeats }) {
+export default function Form ({ selectedSeats, setInformation }) {
 
     const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ export default function Form ({ selectedSeats }) {
         <>
         <BuyersName typedName = {typedName} setTypedName = {setTypedName} />
         <BuyersCPF typedCPF = {typedCPF} setTypedCPF = {setTypedCPF} />
-        <ReserveSeatsButton postOrder = {postOrder} />
+        <ReserveSeatsButton postOrder = {postOrder} setInformation = {setInformation} />
         </>
     );
     

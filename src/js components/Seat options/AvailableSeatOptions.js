@@ -9,11 +9,13 @@ import Legends from "./Legends";
 import Form from "./Form";
 import Footer from "../Footer";
 
-export default function AvailableSeatOptions () {
+export default function AvailableSeatOptions ( {setSelectedMovie, setSelectedMovieSession} ) {
 
 	const { sessionID } = useParams();
 	const [seatchart, setSeatchart] = useState(null);
 	const [selectedSeats, setSelectedSeats] = useState([]);
+
+	const movieDateData = {};
 
     useEffect(() => {
         const seatList = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sessionID}/seats`);
@@ -21,7 +23,22 @@ export default function AvailableSeatOptions () {
         seatList.then(APIResponse => {
             setSeatchart(APIResponse.data);
         });
+
     }, []);
+
+	function setInformation () {
+
+		console.log("set info")
+
+		movieDateData = {
+			date: seatchart.day.date,
+			time: seatchart.name
+		};
+
+		setSelectedMovie(seatchart.movie.title);
+		setSelectedMovieSession(movieDateData);
+	}
+
 
     if(seatchart === null) {
         return "Aguarde, por favor ...";
@@ -46,7 +63,7 @@ export default function AvailableSeatOptions () {
                 }
             </AvailableSeats>
 			<Legends />
-			<Form selectedSeats = {selectedSeats} />
+			<Form selectedSeats = {selectedSeats} setInformation = {setInformation} />
 			<Footer />
         </>
 	)};
