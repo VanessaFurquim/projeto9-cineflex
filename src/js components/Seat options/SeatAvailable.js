@@ -22,6 +22,7 @@ export default function SeatAvailable ({ children, seat, selectedSeats, setSelec
         }
 
         if (!selectedSeats.includes(seat.id)) {
+
             setSelectedSeats([...selectedSeats, seat.id])
         }
 	}

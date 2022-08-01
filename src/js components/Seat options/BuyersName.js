@@ -1,9 +1,7 @@
 import { useState } from "react";
 import styledComponent from "styled-components";
 
-export default function ColectBuyersName () {
-
-    const [typedName, setTypedName] = useState("");
+export default function ColectBuyersName ( {typedName, setTypedName} ) {
 
     return (
         <>

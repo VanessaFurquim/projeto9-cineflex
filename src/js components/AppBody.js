@@ -8,16 +8,14 @@ import TicketAndBuyerInformation from "./Ticket and buyer information/TicketAndB
 
 export default function AppBody () {
     return (
-        <>
-            <BrowserRouter>
-                <Header />
-                <Routes>
-                    <Route path = "/" element = {<MovieOptions />} />
-                    <Route path = "/sessoes/:movieID" element = {<SessionOptions />} />
-                    <Route path = "/assentos/:sessionID" element = {<AvailableSeatOptions />} />
-                    <Route path = "/sucesso" element = {<TicketAndBuyerInformation />} />
-                </Routes>
-            </BrowserRouter>
-        </>
+        <BrowserRouter>
+            <Header />
+            <Routes>
+                <Route path = "/" element = {<MovieOptions />} />
+                <Route path = "/sessoes/:movieID" element = {<SessionOptions />} />
+                <Route path = "/assentos/:sessionID" element = {<AvailableSeatOptions />} />
+                <Route path = "/sucesso" element = {<TicketAndBuyerInformation />} />
+            </Routes>
+        </BrowserRouter>
     );
 }

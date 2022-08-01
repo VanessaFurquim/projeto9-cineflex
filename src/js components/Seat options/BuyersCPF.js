@@ -1,9 +1,7 @@
 import { useState } from "react";
 import styledComponent from "styled-components";
 
-export default function ColectBuyersCPF () {
-
-    const [typedCPF, setTypedCPF] = useState("");
+export default function ColectBuyersCPF ( {typedCPF, setTypedCPF} ) {
 
     return (
         <>
